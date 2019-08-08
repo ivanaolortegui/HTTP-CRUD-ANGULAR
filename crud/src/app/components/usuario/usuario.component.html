@@ -1,1 +1,94 @@
-<p>usuario works!</p>
+<h1>Usuario <small>Nuevo del Usuario</small></h1>
+<hr />
+
+<div class="row text-right">
+  <div class="col">
+    <button
+      [routerLink]="['/usuarios']"
+      routerLinkActive="router-link-active"
+      class="btn btn-danger">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+<div class="row animated fadeIn faster">
+  <div class="col col-sm-6 card">
+    <form [formGroup]="form" (ngSubmit)="useInputValues()"  enctype="application/x-www-form-urlencoded" novalidate>
+      <div class="form-group" [ngClass]="{'has-danger': !form.get('nombre').valid }">
+        <label>Nombre</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Nombre"
+          formControlName="nombre">
+          <!-- <div *ngIf="form.controls['nombre'].errors?.required" class="text-danger text fadeIn">
+             El nombre es necesario 
+          </div> -->
+          <div *ngIf="form.controls['nombre'].errors?.minlength" class="text-danger text fadeIn">
+             Por lo menos 3 caracteres
+         </div>
+      </div>
+      <div class="form-group">
+        <label>Primer Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Primer Apellido"
+          formControlName="apellidopat">
+      </div>
+      <div class="form-group">
+        <label>Segundo Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Segundo Apellido"
+          formControlName="apellidomat">
+      </div>
+      <div class="form-group">
+        <label>Email </label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="correo"
+          formControlName="email">
+      </div>
+      <div class="form-group">
+        <label>Fecha de nacimiento</label>
+        <input
+          type="date"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Fecha de nacimiento"
+          formControlName="fchnac">
+      </div>
+      <div class="form-group">
+        <label>Fecha de ingreso</label>
+        <input
+          type="date"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Fecha de ingreso"
+          formControlName="fchingreso">
+      </div>
+
+      <hr/>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary ">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row animated fadeIn faster">
+
+  <div class="col col-sm-6 card">{{userCreated.nombre}}</div>
+</div>
