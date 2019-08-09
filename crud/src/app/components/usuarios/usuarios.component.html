@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col text-right">
     <button
-      [routerLink]="['/usuario/nuevo']"
+      [routerLink]="['agregar']"
       routerLinkActive="router-link-active"
       class="btn btn-primary">
       <i class="fa fa-plus">
@@ -34,7 +34,7 @@
                 </td>
                 <td>
                   <img [src]="user.avatar" alt="" />
-                  {{ user.first_name }} {{ user.last_name }}
+                 <span >{{ user.first_name }} {{ user.last_name }}</span> 
                 </td>
 
                 <td>
@@ -47,7 +47,7 @@
                       <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                     </span>
                   </a>
-                  <a class="table-link">
+                  <a [routerLink]="['/editar',user.id]" routerLinkActive="router-link-active"   class="table-link"class="table-link">
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>

@@ -16,8 +16,8 @@ export class UsuarioService {
   getUsers() {
     return this.http.get(`${this.api}?page=1`);
   }
-  getUser(id:any) {
-    return this.http.get(`${this.api/id}`);
+  getUser(id: string) {
+    return this.http.get(`${this.api}/${id}`);
   }
   createUser(user: User) {
     return this.http.post(this.api, {
@@ -28,9 +28,18 @@ export class UsuarioService {
                                       email: user.apellidomat,
                                       fchnac: user.apellidomat,
                                       fchingreso: user.apellidomat
-    });
+                                    });
   }
-  updateUser(user: { id: number }) {
-    return this.http.put(`${this.api / user.id}`, user);
+  updateUser(user: User) {
+    return this.http.put(`${this.api}/${user.id}`, {
+                                                    headers: this.headers,
+                                                    nombre: user.nombre,
+                                                    apellidopat: user.apellidopat,
+                                                    apellidomat: user.apellidomat,
+                                                    email: user.apellidomat,
+                                                    fchnac: user.apellidomat,
+                                                    fchingreso: user.apellidomat,
+                                                    id: user.id
+    });
   }
 }

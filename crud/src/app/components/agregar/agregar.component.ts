@@ -3,17 +3,15 @@ import { FormGroup, FormControl, Validator, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 
 import { UsuarioService } from '../../services/usuario.service';
-import { User } from '../../interface/user';
-
 
 @Component({
-  selector: "app-usuario",
-  templateUrl: "./usuario.component.html",
-  styleUrls: ["./usuario.component.css"]
+  selector: 'app-agregar',
+  templateUrl: './agregar.component.html',
+  styleUrls: ['./agregar.component.css']
 })
-export class UsuarioComponent implements OnInit {
+export class AgregarComponent implements OnInit {
   form: FormGroup;
-  user: User;
+  userCreated: any;
   constructor(
     private usuarioService: UsuarioService,
     private route: ActivatedRoute,
@@ -22,12 +20,12 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");
-   
-      this.userService.getUser(id).subscribe(resp => this.user =resp['data']);
+    if (id != "nuevo") {
+      this.userService.getUser(id).subscribe(resp => console.log(resp))
       console.log(id);
   
      
-  
+    } 
     
     this.form = new FormGroup({
       nombre: new FormControl("", [
@@ -45,4 +43,14 @@ export class UsuarioComponent implements OnInit {
     });
   }
 
+  useInputValues() {
+    if (this.form.valid) {
+      console.log(this.form.value);
+      return this.usuarioService.createUser(this.form.value).subscribe(arg => {
+        console.log(arg);
+        this.userCreated = arg;
+        this.form.reset();
+      });
+    }
+  }
 }
