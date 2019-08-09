@@ -13,11 +13,7 @@ users : any;
   constructor(private usuarioService : UsuarioService) { }
 
   ngOnInit() {
-    this.usuarioService.getUsers().subscribe(resp => {
-      this.users=resp['data'];
-    console.log(resp);
-    }
-      )
+    this.usuarioService.getUsers().subscribe(resp => this.users=resp['data'])
   }
 
 }
