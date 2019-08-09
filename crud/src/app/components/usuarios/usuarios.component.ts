@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
 
 
 
@@ -8,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit {
-
-  constructor() { }
+users : any;
+  constructor(private usuarioService : UsuarioService) { }
 
   ngOnInit() {
+    this.usuarioService.getUsers().subscribe(resp => {
+      this.users=resp['data'];
+    console.log(resp);
+    }
+      )
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validator, Validators } from "@angular/forms";
 import { UsuarioService } from "../../services/usuario.service";
+import { log } from 'util';
 
 @Component({
   selector: "app-usuario",
@@ -10,7 +11,9 @@ import { UsuarioService } from "../../services/usuario.service";
 export class UsuarioComponent implements OnInit {
   form: FormGroup;
   userCreated: any;
-  constructor(private usuarioService: UsuarioService) {
+  constructor(private usuarioService: UsuarioService) { }
+
+  ngOnInit() {
     this.form = new FormGroup({
       nombre: new FormControl('', [
         Validators.required,
@@ -27,17 +30,11 @@ export class UsuarioComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
   useInputValues() {
-    if (this.form.valid) {
-      console.log(this.form.value);
-     
-      return this.usuarioService
-        .createUser(this.form.value)
-        .subscribe(arg =>{
-          console.log(arg);
-          
+    if (this.form.valid) { 
+      console.log(this.form.value);   
+      return this.usuarioService.createUser(this.form.value)
+        .subscribe(arg => { console.log(arg)    
          this.userCreated= arg
          this.form.reset();
          } );
