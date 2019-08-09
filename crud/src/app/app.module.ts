@@ -10,6 +10,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { AgregarComponent } from './components/agregar/agregar.component';
 import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuario.component';
+import { UsuarioActualizadoComponent } from './components/usuario-actualizado/usuario-actualizado.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { EditarUsuarioComponent } from './components/editar-usuario/editar-usuar
     UsuariosComponent,
     UsuarioComponent,
     AgregarComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    UsuarioActualizadoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

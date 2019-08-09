@@ -5,6 +5,8 @@ export interface User {
     email: string;
     fchnac: string;
     fchingreso: string;
-    id?: string
+    id?: string;
+    updatedAt?: string;
+    createdAt?:string;
   }
   

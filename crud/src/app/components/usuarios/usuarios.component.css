@@ -1,7 +1,7 @@
 
 
 
-/* USER LIST TABLE */
+
 .user-list tbody td > img {
     position: relative;
 	max-width: 50px;
@@ -19,7 +19,7 @@
 	font-style: italic;
 }
 
-/* TABLES */
+
 
 
 .table td, .table th {
@@ -47,7 +47,7 @@
 }
 .table thead > tr > th span {
 	display: inline-block;
-	padding: 0 5px;
+
 }
 .table thead > tr > th > a span {
 	color: #344644;

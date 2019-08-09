@@ -1,11 +1,11 @@
-<h1 class="text-center">Usuarios</h1>
-<hr/>
-<div class="row">
+<app-header></app-header>
+
+<div class="container ">
   <div class="col text-right">
     <button
-      [routerLink]="['agregar']"
+      [routerLink]="['usuario']"
       routerLinkActive="router-link-active"
-      class="btn btn-primary">
+      class=" btn btn-success">
       <i class="fa fa-plus">
         Agregar
       </i>
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div class="container margin-top">
+<section class="container margin-top">
   <div class="row">
     <div class="col">
       <div class="main-box clearfix">
@@ -24,48 +24,41 @@
                 <th><span>Id</span></th>
                 <th><span>User</span></th>
                 <th><span>Email</span></th>
-                <th>&nbsp;</th>
+                
               </tr>
-            </thead>
+            </thead>       
             <tbody>
-              <tr *ngFor="let user of users">
-                <td>
-                  {{ user.id }}
+              <tr *ngFor="let user of users" >
+                <td> <span>{{ user.id }}</span>
+                  
                 </td>
                 <td>
                   <img [src]="user.avatar" alt="" />
-                 <span >{{ user.first_name }} {{ user.last_name }}</span> 
+                  <span>{{ user.first_name }} {{ user.last_name }}</span>
                 </td>
 
                 <td>
                   {{ user.email }}
                 </td>
                 <td style="width: 20%;">
-                  <a [routerLink]="['/usuario',user.id]" routerLinkActive="router-link-active"   class="table-link">
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                    </span>
-                  </a>
-                  <a [routerLink]="['/editar',user.id]" routerLinkActive="router-link-active"   class="table-link"class="table-link">
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                    </span>
-                  </a>
-                  <a  class="table-link danger">
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                    </span>
-                  </a>
+                  <button [routerLink]="['/usuario', user.id]" routerLinkActive="router-link-active"
+                    class=" table-link btn btn btn-info mx-1 my-1">
+                      <i class="fa fa-search-plus "></i>
+                  </button>
+                  <button [routerLink]="['/editar', user.id]" routerLinkActive="router-link-active"    
+                    class="table-link btn  btn-success mx-1 my-1">
+                      <i class="fa fa-pencil"></i>
+                  </button>
+                  <button class="table-link btn btn btn-danger mx-1 my-1">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                 
                 </td>
               </tr>
-              <tr></tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>

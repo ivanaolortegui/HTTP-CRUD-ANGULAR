@@ -1,0 +1,10 @@
+<aside *ngIf="user" class=" shadow-lg p-3 mb-5 bg-white rounded">
+  <h6 class="mt-3">Nombre: {{ user.nombre }}</h6>
+  <h6>Apellido: {{ user. apellidopat}}</h6>
+  <h6>Email: {{ user.email}}</h6>
+  <h6>Fecha de nacimiento: {{user.fchnac}}</h6>
+  <h6>Fecha de ingreso: {{user.fchingreso}}</h6>
+  <h6>Id {{user.id}}</h6>
+  <h6 *ngIf="user.updatedAt">Fecha de creación : {{user.updatedAt}}</h6>
+  <h6 *ngIf="user.createdAt">Fecha de creación : {{user.createdAt}}</h6>
+</aside>

@@ -1,45 +1,37 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "../interface/user";
-import { Url } from "url";
+
 
 @Injectable({
   providedIn: "root"
 })
 export class UsuarioService {
-  private api: any = `https://reqres.in/api/users`;
+
+  private api: string= `https://reqres.in/api/users`;
+  
   constructor(private http: HttpClient) {}
   //Agregando a la cabecera Content-Type
   headers = new HttpHeaders({
     "Content-Type": "application/x-www-form-urlencoded"
   });
+
+  // Obtener todos los usuarios
   getUsers() {
     return this.http.get(`${this.api}?page=1`);
   }
+  //Obtener un usuario por id
   getUser(id: string) {
     return this.http.get(`${this.api}/${id}`);
   }
+  // Crear nuevo usuario
   createUser(user: User) {
-    return this.http.post(this.api, {
-                                      headers: this.headers,
-                                      nombre: user.nombre,
-                                      apellidopat: user.apellidopat,
-                                      apellidomat: user.apellidomat,
-                                      email: user.apellidomat,
-                                      fchnac: user.apellidomat,
-                                      fchingreso: user.apellidomat
-                                    });
+    const body = user
+    return this.http.post(this.api, { headers: this.headers, ...body});
   }
+  // Editar un usuario
   updateUser(user: User) {
-    return this.http.put(`${this.api}/${user.id}`, {
-                                                    headers: this.headers,
-                                                    nombre: user.nombre,
-                                                    apellidopat: user.apellidopat,
-                                                    apellidomat: user.apellidomat,
-                                                    email: user.apellidomat,
-                                                    fchnac: user.apellidomat,
-                                                    fchingreso: user.apellidomat,
-                                                    id: user.id
-    });
+    const body = user
+    return this.http.put(`${this.api}/${user.id}`, {headers: this.headers, ...body});
   }
 }

@@ -1,7 +1,6 @@
-<h2 class="text-center">Nuevo del Usuario</h2>
-<hr />
+<app-header></app-header>
 
-<div class="row text-right">
+<div class=" text-right">
   <div class="col">
     <button
       [routerLink]="['/usuarios']"
@@ -13,9 +12,9 @@
   </div>
 </div>
 
-<div class="row animated fadeIn faster">
-  <div class="col col-sm-6 card">
-    <form [formGroup]="form" (ngSubmit)="useInputValues()"  enctype="application/x-www-form-urlencoded" novalidate>
+<section class="row animated fadeIn faster mt-3">
+  <div class=" col-sm-12 col-md-6 shadow p-3 mb-5 bg-white rounded">
+    <form *ngIf="user" [formGroup]="form" (ngSubmit)="useInputValues()"  enctype="application/x-www-form-urlencoded" novalidate>
       <div class="form-group" >
         <label>Id</label>
         <input
@@ -82,7 +81,7 @@
           formControlName="fchingreso">
       </div>
 
-      <hr/>
+     
       <div class="form-group text-center">
         <button type="submit" class="btn btn-primary ">
           <i class="fa fa-save"></i>
@@ -91,8 +90,8 @@
       </div>
     </form>
   </div>
-</div>
 
-<div class="row animated fadeIn faster">
-  <div class="col col-sm-6 card">{{userCreated.nombre}}</div>
-</div>
+  <div class="col-sm-12 col-md-6">
+    <app-usuario-actualizado [user]="userCreated"></app-usuario-actualizado>
+  </div>
+</section>
