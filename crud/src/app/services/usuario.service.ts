@@ -1,10 +1,12 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "../interface/user";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+import { User } from '../interface/user';
 
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UsuarioService {
 
@@ -13,16 +15,16 @@ export class UsuarioService {
   constructor(private http: HttpClient) {}
   //Agregando a la cabecera Content-Type
   headers = new HttpHeaders({
-    "Content-Type": "application/x-www-form-urlencoded"
+    'Content-Type': 'application/x-www-form-urlencoded'
   });
 
   // Obtener todos los usuarios
   getUsers() {
-    return this.http.get(`${this.api}?page=1`);
+    return this.http.get(`${this.api}?page=1`).pipe(map(user=> user['data']));
   }
   //Obtener un usuario por id
   getUser(id: string) {
-    return this.http.get(`${this.api}/${id}`);
+    return this.http.get(`${this.api}/${id}`).pipe(map(user=> user['data']));;
   }
   // Crear nuevo usuario
   createUser(user: User) {
